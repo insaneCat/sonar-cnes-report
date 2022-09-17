@@ -17,10 +17,10 @@ export default class CnesReportApp extends React.PureComponent {
         branches: [],
         languages: [{id: 'en_US', name: 'English'}, {id: 'fr_FR', name: 'French'}],
         enableDocx: true,
-        enableMd: true,
-        enableXlsx: true,
-        enableCsv: true,
-        enableConf: true,
+        enableMd: false,
+        enableXlsx: false,
+        enableCsv: false,
+        enableConf: false,
         isSupported: true
     };
 

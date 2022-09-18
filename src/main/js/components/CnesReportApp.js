@@ -6,7 +6,7 @@
 import React from "react";
 
 import DeferredSpinner from 'sonar-ui-common/components/ui/DeferredSpinner';
-import { getProjectsList, initiatePluginToken, getBranches, isCompatible } from "../common/api";
+import {getBranches, getProjectsList, initiatePluginToken, isCompatible} from "../common/api";
 
 export default class CnesReportApp extends React.PureComponent {
     state = {
@@ -120,16 +120,10 @@ export default class CnesReportApp extends React.PureComponent {
         return (
             <div class="page-wrapper-simple">
                 <div class="page-simple">
-                    <h1 class="maintenance-title text-center">Generate a report</h1>
-                    { !this.state.isSupported &&
-                        <div class="compatibility-warning">
-                            <p>This SonarQube version is not supported by this cnesreport version.</p>
-                            <p>For further information, please refer to the <a href="https://github.com/cnescatlab/sonar-cnes-report#compatibility-matrix">compatibility matrix</a> on the project GitHub page.</p>
-                        </div>
-                    }
+                    <h1 class="maintenance-title text-center">Создание отчета</h1>
                     <form id="generation-form" action="../../api/cnesreport/report" method="get">
                         <div class='forminput'>
-                            <label for="key" id="keyLabel" class="login-label"><strong>Project</strong></label>
+                            <label for="key" id="keyLabel" class="login-label"><strong>Проект</strong></label>
                             <select id="key"
                                 name="key"
                                 class="login-input"
@@ -138,23 +132,23 @@ export default class CnesReportApp extends React.PureComponent {
                             </select>
                         </div>
                         <div class='forminput'>
-                            <label for="branch" id="branchLabel" class="login-label"><strong>Branch key</strong></label>
+                            <label for="branch" id="branchLabel" class="login-label"><strong>Бранч</strong></label>
                             <select id="branch"
                                 name="branch"
                                 class="login-input" required>
                                 {branchesList}
                             </select>
                         </div>
+                        {/*<div class='forminput'>*/}
+                        {/*    <label for="language" id="languageLabel" class="login-label"><strong>Report language</strong></label>*/}
+                        {/*    <select id="language"*/}
+                        {/*        name="language"*/}
+                        {/*        class="login-input" required>*/}
+                        {/*        {languagesList}*/}
+                        {/*    </select>*/}
+                        {/*</div>*/}
                         <div class='forminput'>
-                            <label for="language" id="languageLabel" class="login-label"><strong>Report language</strong></label>
-                            <select id="language"
-                                name="language"
-                                class="login-input" required>
-                                {languagesList}
-                            </select>
-                        </div>
-                        <div class='forminput'>
-                            <label for="author" id="authorLabel" class="login-label"><strong>Author</strong></label>
+                            <label for="author" id="authorLabel" class="login-label"><strong>Автор</strong></label>
                             <input type="text"
                                 id="author"
                                 name="author"
@@ -178,7 +172,7 @@ export default class CnesReportApp extends React.PureComponent {
                                 value="true"
                                 defaultChecked={this.state.enableDocx}
                                 onChange={() => this.onChangeCheckbox('enableDocx')}/>
-                            <label for="enableDocx" id="enableDocxLabel"><strong>Enable DOCX generation</strong></label>
+                            <label for="enableDocx" id="enableDocxLabel"><strong>Включить DOCX</strong></label>
                         </div>
                         <div>
                             <input id="enableMdHidden" type="hidden" value="false" name="enableMd" disabled={this.state.enableMd}/>
@@ -188,7 +182,7 @@ export default class CnesReportApp extends React.PureComponent {
                                 value="true"
                                 defaultChecked={this.state.enableMd}
                                 onChange={() => this.onChangeCheckbox('enableMd')}/>
-                            <label for="enableMd" id="enableMdLabel"><strong>Enable MD generation</strong></label>
+                            <label for="enableMd" id="enableMdLabel"><strong>Включить MD</strong></label>
                         </div>
                         <div>
                             <input id="enableXlsxHidden" type="hidden" value="false" name="enableXlsx" disabled={this.state.enableXlsx}/>
@@ -198,7 +192,7 @@ export default class CnesReportApp extends React.PureComponent {
                                 value="true"
                                 defaultChecked={this.state.enableXlsx}
                                 onChange={() => this.onChangeCheckbox('enableXlsx')}/>
-                            <label for="enableXlsx" id="enableXlsxLabel"><strong>Enable XLSX generation</strong></label>
+                            <label for="enableXlsx" id="enableXlsxLabel"><strong>Включить XLSX</strong></label>
                         </div>
                         <div>
                             <input id="enableCsvHidden" type="hidden" value="false" name="enableCsv" disabled={this.state.enableCsv}/>
@@ -208,23 +202,22 @@ export default class CnesReportApp extends React.PureComponent {
                                 value="true"
                                 defaultChecked={this.state.enableCsv}
                                 onChange={() => this.onChangeCheckbox('enableCsv')}/>
-                            <label for="enableCsv" id="enableCsvLabel"><strong>Enable CSV generation</strong></label>
+                            <label for="enableCsv" id="enableCsvLabel"><strong>Включить CSV</strong></label>
                         </div>
                         <div>
                             <input id="enableConfHidden" type="hidden" value="false" name="enableConf" disabled={this.state.enableConf}/>
-                            <input type="checkbox"
+                            <input type="checkbox" type="hidden"
                                 id="enableConf"
                                 name="enableConf"
                                 value="true"
                                 defaultChecked={this.state.enableConf}
                                 onChange={() => this.onChangeCheckbox('enableConf')}/>
-                            <label for="enableConf" id="enableConfLabel"><strong>Enable quality configuration generation</strong></label>
+                            {/*<label for="enableConf" id="enableConfLabel"><strong>Enable quality configuration generation</strong></label>*/}
                         </div>
                         <br />
-                        <input id="generation" name="generation" type="submit" value="Generate"
+                        <input id="generation" name="generation" type="submit" value="Сделать"
                             disabled={this.shouldDisableGeneration()}/>
                         <br />
-                        <em class="info-message">This operation may take some time, please wait while the report is being generated.</em>
                     </form>
                 </div>
             </div>

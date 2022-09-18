@@ -17,17 +17,13 @@
 
 package fr.cnes.sonar.report.exporters.data;
 
-import static fr.cnes.sonar.report.utils.MeasureConverter.getIntMeasureFromString;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import fr.cnes.sonar.report.model.Language;
 import fr.cnes.sonar.report.model.Measure;
 import fr.cnes.sonar.report.model.Report;
+
+import java.util.*;
+
+import static fr.cnes.sonar.report.utils.MeasureConverter.getIntMeasureFromString;
 
 /**
  * Format resources in different structures to have an easier use in report
@@ -66,7 +62,7 @@ public final class DataAdapter {
     /**
      * Label for the total line
      */
-    private static final String TOTAL = "Total";
+    private static final String TOTAL = "Итого";
     /**
      * Just an empty string
      */

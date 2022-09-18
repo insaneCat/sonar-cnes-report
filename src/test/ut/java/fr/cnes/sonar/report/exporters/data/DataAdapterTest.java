@@ -1,35 +1,14 @@
-/*
- * This file is part of cnesreport.
- *
- * cnesreport is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * cnesreport is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with cnesreport.  If not, see <http://www.gnu.org/licenses/>.
- */
 package fr.cnes.sonar.report.exporters.data;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.junit.Assert;
-import org.junit.Test;
-import org.mockito.Mockito;
 
 import fr.cnes.sonar.report.model.Language;
 import fr.cnes.sonar.report.model.Measure;
 import fr.cnes.sonar.report.model.Project;
 import fr.cnes.sonar.report.model.Report;
+import org.junit.Assert;
+import org.junit.Test;
+import org.mockito.Mockito;
+
+import java.util.*;
 
 public class DataAdapterTest {
 
@@ -92,7 +71,7 @@ public class DataAdapterTest {
         // Missing one metric
         List<List<String>> expected = new ArrayList<>();
         expected.add(Arrays.asList(""));
-        expected.add(Arrays.asList("Total", "123"));
+        expected.add(Arrays.asList("Итого", "123"));
         Assert.assertEquals(expected, DataAdapter.getVolumes(report));
 
         // Metrics are all OK
@@ -101,7 +80,7 @@ public class DataAdapterTest {
         expected = new ArrayList<>();
         expected.add(Arrays.asList("Java", "200"));
         expected.add(Arrays.asList("Python", "13456"));
-        expected.add(Arrays.asList("Total", "123"));
+        expected.add(Arrays.asList("Итого", "123"));
         Assert.assertEquals(expected, DataAdapter.getVolumes(report));
     }
 

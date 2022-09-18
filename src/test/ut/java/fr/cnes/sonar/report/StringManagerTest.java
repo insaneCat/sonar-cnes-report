@@ -52,7 +52,7 @@ public class StringManagerTest {
      */
     @Test
     public void simpleStringRequestTest() {
-        assertEquals("Type", StringManager.string("header.type"));
+        assertEquals("Тип", StringManager.string("header.type"));
     }
 
     /**
